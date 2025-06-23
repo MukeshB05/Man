@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Havenify</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bitter:400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="header-dark">
+      <nav class="navbar navbar-dark navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <h1>Havenify</h1>
+          </a>
+        </div>
+      </nav>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <h1>
+              Its an Ad-Free Music Player, High-Quality MP3 Songs with Metadata
+              support, and a Modern Design.
+            </h1>
+            <h3>Chill it &amp; Vibe it</h3>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="tab-content">
+      <div class="tab-pane active" role="tabpanel" id="tab-1">
+        <section class="highlight-clean">
+          <div class="container text-center">
+            <select id="moat-bitrate" class="custom-select">
+              <option value="4">320kbps</option>
+              <option value="3" selected>160kbps</option>
+              <option value="2">96kbps</option>
+              <option value="1">48kbps</option>
+            </select>
+            <div class="intro">
+              <form action="#" method="get">
+                <input
+                  class="form-control float-left fit-content"
+                  type="text"
+                  id="moat-search-box"
+                  placeholder="Enter Name, Year, Artist"
+                />
+                <button
+                  class="btn btn-primary"
+                  id="moat-search-trigger"
+                  type="submit"
+                  onclick="moatSearch()"
+                >
+                  Search
+                </button>
+              </form>
+            </div>
+            <h5 class="text-uppercase" style="color: rgb(165, 255, 184)">
+              Results
+            </h5>
+            <div id="moat-results">
+              <h5>Featured</h5>
+            </div>
+            <button id="loadmore" class="btn btn-secondary" style="width: 100%">
+              Load More
+            </button>
+            <div class="button-container"></div>
+            <script>
+              const buttonTitles = [
+                "English Songs",
+                "Yuvan",
+                "Trending",
+                "Malayalam",
+                "GV Prakash",
+                "Popular",
+                "No Copyright Songs",
+              ];
+              const buttonContainer =
+                document.querySelector(".button-container");
+
+              buttonTitles.forEach((title) => {
+                const button = document.createElement("button");
+                button.classList.add("search-toggle");
+                button.textContent = title;
+                button.setAttribute("onclick", `domoatSearch('${title}')`);
+                buttonContainer.appendChild(button);
+              });
+            </script>
+            <p class="footer">
+              This content is not affiliated with, endorsed, sponsored, or
+              specifically approved by any third party music provider like
+              Gaana, moat, Spotify, and is not responsible for any copyright
+              material.<br />
+              We don't serve any music on our servers.<br /><br />
+              Originally by House Targaryens.<br />
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="audio-player">
+      <div class="row">
+        <div class="col-auto">
+          <img
+            class="img-fluid d-inline"
+            id="player-image"
+            src="assets\img\1280821.png"
+            loading="lazy"
+          />
+        </div>
+        <div class="col">
+          <div class="song-info">
+            <span id="player-name">Song</span><br />
+            <span id="player-album">Album</span>
+          </div>
+          <audio id="player" controls>
+            <source id="audioSource" src="" />
+            Your browser does not support the audio format.
+          </audio>
+          <div class="player-controls">
+            <button id="prev-song" onclick="playPrevSong()">⏮️</button>
+            <button id="play-pause" onclick="togglePlayPause()">⏯️</button>
+            <button id="next-song" onclick="playNextSong()">⏭️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/js/moat-search.js"></script>
+  </body>
+</html>
